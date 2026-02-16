@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+</html>
+
+<style>
+    .image-preview {
+        border-width: 30px;
+        border-style: solid;
+        border-color: skyblue lightpink lightseagreen #ffefd5;
+        display: inline-block;
+    }
+</style>
+<style>
+    span {
+        color: green;
+    }
+
+    #header span {
+        color: pink;
+    }
+
+    p>span {
+        color: red;
+    }
+
+    #header *:last-child {
+        color: orange;
+    }
+
+    #header span:first-child:hover {
+        color: blue;
+    }
+</style>
+
+<body>
+    <div class="image-preview">
+        <img src='https://cpit405.gitlab.io/images/KAU_logo.png'>
+    </div>
+</body>
+
+<body>
+
+    <div id="header">
+        <span class="myclass1">Every</span> <span class="myclass2">one can</span> <span class="myclass3">success.</span>
+    </div>
+    
+
+    <p> One machine can do the work of fifty ordinary men.
+        <span class="myclass4">No machine can do the work of one extraordinary man.</span>
+    </p>
+
+
+
+    <table border="1" style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Element</th>
+                <th>Color</th>
+                <th>Color when mouse over</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>span.myclass1</strong></td>
+                <td style="color: pink;">Pink</td>
+                <td style="color: blue;">Blue</td>
+            </tr>
+            <tr>
+                <td><strong>span.myclass2</strong></td>
+                <td style="color: pink;">Pink</td>
+                <td style="color: pink;">Pink</td>
+            </tr>
+            <tr>
+                <td><strong>span.myclass3</strong></td>
+                <td style="color: orange;">Orange</td>
+                <td style="color: orange;">Orange</td>
+            </tr>
+            <tr>
+                <td><strong>span.myclass4</strong></td>
+                <td style="color: red;">Red</td>
+                <td style="color: red;">Red</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
