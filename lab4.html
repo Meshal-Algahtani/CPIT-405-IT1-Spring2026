@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<title>Lab 4</title>
+<style>
+    .Abody {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0vh;
+        margin: 0;
+    }
+
+    .Bbody {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 0vh;
+        margin: 0;
+        padding-top: 50px;
+    }
+
+    label {
+        font-weight: normal;
+        font-size: 17px;
+    }
+
+    input {
+        width: 400px;
+        padding: 4px;
+        margin: 5px 0;
+    }
+
+    .commentBox {
+        height: 100px;
+        text-align: left;
+        resize: vertical;
+        font-family: inherit;
+        width: 400px;
+
+    }
+
+    .submitButton {
+        background-color: #000000;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+</html>
+
+<body>
+    <div class="Bbody">
+        <h1>Meshal Great Auto Parts - Order Form</h1>
+    </div>
+
+    <div class="Abody">
+        <form action="" class="input">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" placeholder="Enter your first name"><br>
+
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" placeholder="Enter your last name"><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" placeholder="Enter your email" name="email"><br>
+
+            <label for="PhoneNumber">PhoneNumber:</label><br>
+            <input type="tel" id="PhoneNumber" placeholder="Enter your phone number" name="PhoneNumber"><br>
+
+            <label for="Make">Make:</label> <br>
+            <input type="text" id="Make" placeholder="Enter the make of the vehicle" name="Make"><br>
+
+            <label for="Model">Model:</label><br>
+            <input type="text" id="Model" placeholder="Enter the model of the vehicle" name="Model"><br>
+
+            <label for="Year">Year:</label><br>
+            <input type="number" min="1900" id="Year" placeholder="Enter the year of the vehicle" name="Year"><br>
+
+            <label for="Date">Date:</label><br>
+            <input type="date" id="Date" name="Date"><br>
+
+            <label for="Spare Parts">Spare Parts:</label><br>
+            <input type="text" id="Spare Parts" placeholder="Enter spare parts" name="Spare Parts"><br>
+
+            <label for="Quantity">Quantity:</label><br>
+            <input type="number" id="Quantity" placeholder="Enter quantity" name="Quantity"><br>
+
+            <label for="Comment">Comment:</label><br>
+            <textarea id="Comment" class="commentBox" placeholder="Enter any comments" name="Comment"></textarea><br>
+            <input type="submit" value="Submit" class="submitButton">
+        </form>
+    </div>
+</body>
