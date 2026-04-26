@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Quiz - Meshal Algahtani</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            max-width: 600px;
+        }
+
+        .question-block {
+            margin-bottom: 24px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-bottom: 14px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            margin-top: 0;
+            text-align: left;
+            font-size: 15px;
+            padding: 10px 16px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: #1e3a4a;
+            border-color: #38bdf8;
+        }
+
+        .option-btn.correct {
+            background-color: #14532d;
+            border-color: #22c55e;
+            color: #86efac;
+        }
+
+        .option-btn.wrong {
+            background-color: #450a0a;
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+        }
+
+        .quiz-progress {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        #feedback {
+            margin-top: 14px;
+            font-size: 15px;
+            font-weight: bold;
+            min-height: 22px;
+        }
+
+        #feedback.correct {
+            color: #22c55e;
+        }
+
+        #feedback.wrong {
+            color: #ef4444;
+        }
+
+        #next-btn {
+            margin-top: 18px;
+            display: none;
+        }
+
+        #result-block {
+            display: none;
+            text-align: center;
+        }
+
+        #result-block h3 {
+            font-size: 22px;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        #result-block p {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        #restart-btn {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-info">
+            <h1>Meshal Mohammed Algahtani</h1>
+            <p>IT Student | Cybersecurity</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Labs.html">Labs</a></li>
+                <li><a href="myworks.html">My Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-card">
+                <h3>About This App</h3>
+                <hr>
+                <p style="font-size:14px; color:#94a3b8; text-align:left;">A multiple-choice trivia quiz built with vanilla JavaScript. No external APIs — all questions are built-in.</p>
+                <br>
+                <h3>Portfolio Links</h3>
+                <hr>
+                <p><a href="myworks.html">← My Works</a></p>
+                <p><a href="app2.html">View App 2</a></p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section class="card quiz-container">
+                <h2>Trivia Quiz</h2>
+
+                <div id="quiz-block">
+                    <p class="quiz-progress" id="progress">Question 1 of 8</p>
+                    <div class="question-block">
+                        <p class="question-text" id="question-text"></p>
+                        <div class="options" id="options"></div>
+                    </div>
+                    <div id="feedback"></div>
+                    <button id="next-btn">Next Question →</button>
+                </div>
+
+                <div id="result-block">
+                    <h3>Quiz Complete!</h3>
+                    <p id="score-text"></p>
+                    <button id="restart-btn">Play Again</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Meshal Algahtani - CPIT 405 Portfolio</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "What does HTML stand for?",
+                options: ["HyperText Markup Language", "HighText Machine Language", "HyperText and links Markup Language", "None of the above"],
+                answer: 0
+            },
+            {
+                question: "Which CSS property controls the text size?",
+                options: ["font-weight", "text-size", "font-size", "text-style"],
+                answer: 2
+            },
+            {
+                question: "Inside which HTML element do we put JavaScript?",
+                options: ["<js>", "<javascript>", "<script>", "<scripting>"],
+                answer: 2
+            },
+            {
+                question: "Which company developed JavaScript?",
+                options: ["Microsoft", "Netscape", "Google", "Apple"],
+                answer: 1
+            },
+            {
+                question: "What does CSS stand for?",
+                options: ["Creative Style Sheets", "Computer Style Sheets", "Cascading Style Sheets", "Colorful Style Sheets"],
+                answer: 2
+            },
+            {
+                question: "Which HTTP method is used to send data to a server to create/update a resource?",
+                options: ["GET", "POST", "DELETE", "HEAD"],
+                answer: 1
+            },
+            {
+                question: "What is the correct way to declare a JavaScript variable?",
+                options: ["var myVar = 5;", "variable myVar = 5;", "v myVar = 5;", "declare myVar = 5;"],
+                answer: 0
+            },
+            {
+                question: "Which tag is used to create a hyperlink in HTML?",
+                options: ["<link>", "<href>", "<a>", "<url>"],
+                answer: 2
+            }
+        ];
+
+        let currentIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionText = document.getElementById('question-text');
+        const optionsDiv = document.getElementById('options');
+        const feedback = document.getElementById('feedback');
+        const nextBtn = document.getElementById('next-btn');
+        const progress = document.getElementById('progress');
+        const quizBlock = document.getElementById('quiz-block');
+        const resultBlock = document.getElementById('result-block');
+        const scoreText = document.getElementById('score-text');
+        const restartBtn = document.getElementById('restart-btn');
+
+        function loadQuestion() {
+            answered = false;
+            feedback.textContent = '';
+            feedback.className = '';
+            nextBtn.style.display = 'none';
+
+            const q = questions[currentIndex];
+            progress.textContent = `Question ${currentIndex + 1} of ${questions.length}`;
+            questionText.textContent = q.question;
+            optionsDiv.innerHTML = '';
+
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.className = 'option-btn';
+                btn.onclick = () => selectAnswer(i, btn);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selectedIndex, clickedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const correct = questions[currentIndex].answer;
+            const allBtns = optionsDiv.querySelectorAll('.option-btn');
+
+            allBtns.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === correct) {
+                clickedBtn.classList.add('correct');
+                feedback.textContent = '✓ Correct!';
+                feedback.className = 'correct';
+                score++;
+            } else {
+                clickedBtn.classList.add('wrong');
+                allBtns[correct].classList.add('correct');
+                feedback.textContent = '✗ Wrong! The correct answer is highlighted.';
+                feedback.className = 'wrong';
+            }
+
+            nextBtn.style.display = 'block';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        function showResult() {
+            quizBlock.style.display = 'none';
+            resultBlock.style.display = 'block';
+            const pct = Math.round((score / questions.length) * 100);
+            scoreText.textContent = `You scored ${score} out of ${questions.length} (${pct}%)`;
+        }
+
+        restartBtn.addEventListener('click', () => {
+            currentIndex = 0;
+            score = 0;
+            quizBlock.style.display = 'block';
+            resultBlock.style.display = 'none';
+            loadQuestion();
+        });
+
+        loadQuestion();
+    </script>
+
+</body>
+
+</html>

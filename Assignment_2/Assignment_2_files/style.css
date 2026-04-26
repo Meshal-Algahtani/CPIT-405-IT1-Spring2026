@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #0b1120;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 3px solid #1e293b;
+    
+    /* THE FIX: Locks it to the top of the browser */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px; /* Set a specific height */
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+header p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+
+.container {
+    display: flex;
+    max-width: 1100px;
+    /* THE FIX: Push the whole container down so the fixed header doesn't cover it */
+    margin: 110px auto 30px auto; 
+    gap: 20px;
+    padding: 0 20px;
+}
+/* Left Sidebar */
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    
+    /* THE FIX: Locks it to the screen */
+    position: fixed;
+    top: 110px; /* Starts just below the header */
+}
+
+.profile-card {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.profile-pic {
+    font-size: 60px;
+    background-color: #333;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-card hr {
+    border: 1px solid #333;
+    margin: 15px 0;
+}
+
+.profile-card a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.social-links a img {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+/* Right Content Area */
+.content {
+    /* THE FIX: Push the content to the right so the fixed sidebar doesn't cover it */
+    margin-left: 270px;
+    flex-grow: 1;
+    padding: 0 10px 20px;
+}
+.card {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #333;
+}
+
+.card h2 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #38bdf8;
+}
+
+.card h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2a2a2a;
+}
+
+td a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+}
+
+.radio-group {
+    margin-bottom: 15px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0b1120;
+    color: white;
+    border: 1px solid #38bdf8;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #38bdf8;
+    color: #0b1120;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0b1120;
+    border-top: 1px solid #1e293b;
+    margin-top: 40px;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+    header {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px 20px;
+        height: auto;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .container {
+        flex-direction: column;
+        margin-top: 120px;
+        padding: 0 15px 20px;
+    }
+
+    .sidebar {
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .card {
+        padding: 24px;
+        margin: 16px 0;
+    }
+}
+
+@media (max-width: 680px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+
+    .profile-card {
+        padding: 18px;
+    }
+
+    .profile-pic {
+        width: 130px;
+        height: 130px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+}
